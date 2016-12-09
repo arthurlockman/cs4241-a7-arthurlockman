@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cs4241-a7-arthurlockman",
+  "private_key_id": "e704b3a401fa58ef275092e507e227626510b955",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC/ctR9pR1XoQQM\nvUiJaytyL/JinQfajzzKKvNGvmQjn42QUCx41V6nmtwzctHKpknYNWoIRDNB4QeP\neKNTQdfH+0D5Ig+GJU5FFugpaJGY96sPPlRulpRaphpJ7ZEhJDM7mktJVEXJiP3D\nhSk3F95Gw0+OeVsDA74JWLmN3fIOXME9+ivBKPg6sf/qTRwefcHfgcECGSJlvRGM\nwWoQE6PFVLWLzG5asZJXU3lE4N2wQ33JiL8HlI2fbycaB2g6VsCnaIh7ZZemJKv7\n7RIRw/95DiRfHpAC27LOXbK9G1VlOfY8AclxM+xlToRv+FykogwsUNWRaeyFv9Bk\nRWejiCP7AgMBAAECggEBAK5q9HJfymK6XBErJXmkvJk0W3RCMhSJqM1a4faSoHLf\n+r3+fPW9FpZF/NWWhtFEPESRLT/IupYLaLLqKopAk1Erc99Fi7UgKbXCD9Mh5Hvj\nL+IcXBnAb/pCF/NAT5dM/qwPfwWYlFfuyZqmp4z83tHDQKjBoQwXDbxALBS2nr87\nZzxfmb3bXScrkqjVJ3cw3UrJN3lIzI42YwhaC3P5SLw1ZcGP5CwHj9oB/PuZh/Sl\nShwQ0Nr6n+OB2AbKPYMYA9C0g1EZrVIpKq+fhKeRvKuUexijuTk8lmn9TuYgYoKV\nQtaJhLqKZ5yLjAFzGbmqu1mlP5NVEu9yJoHbNoZPmfECgYEA8KLA018Y6hO+IRp2\niIF2/gPATVrvWNnSS8U0B7Mh8YhC7hm84oWi+V2A3kZkdnuS4lOaVdQYEY387iRV\ndQ7E6cT9lgsTOvKcPAI1+7XjfJZtKA3CKDbzsAaah4LFeFF9SbeuW47e6GECXpvN\nJzzutC0J7tzg96Qfi4pgxb4/1MMCgYEAy6wZyKBUxc4cP1mOjVoc1wIj8gymUBiH\ngUGRj6pyr4+cC8Blkug6YPkYL0qN7sq/FDgy3OYSTpWtUyiYroYy5SM8ggT5Fo1w\nlgvGESl1Fq6SiJLLfCmtUKdS1G6Zn0V7ly2otWNjbyskeOJM3q5CfD9MAbxvK3XY\nCKLQ04ogoGkCgYAvojgDX2bCJ0hSqzddjCsu2zU82sxYTT34q7/B6m7ErhF5qnSe\nbo+1RxIUbeDDJ3ELBjud088z4mR4C48zDcpi8BC2m9ihqZbNti5Tdkziw7A15otR\nhJc2eAgs3PEUASWI6yhDjYOIgnOCoNq6crBZ0DSQKP8LZlysNac0XZWrGwKBgBxa\n5WwNBkBTpZMcQMBlH0a/wYldQXo9MABKxJ0fub+/WpY4Puvo8Ne3ViqfUotAJsIF\n4O7oCPxv0iWVrUv+2u8TrMTdNGBzaI07LmQNRYPW4gepiDLNCpgD84AntbN61O4D\nKU23fIxpkTZTKyiFUjRCC67iMQf37A+nuzL4M/qhAoGAFmc9M83nB/FD74Sj0MH+\nzMq2nhjFHxBe3psEBXLlYS88ULjuIjvkhY3Ztsq0E7pQS4Xp+1foMuGTzIBb7eWA\nKcIRNW0sYMF0XHFzkwe4YjDEbjVWz3EZPR+aOhTZnJzkWLDF9+vUMyrmIpVC68m0\nQJ1kosTWN+HXtd/sjVeCfFQ=\n-----END PRIVATE KEY-----\n",
+  "client_email": "heroku-dyno@cs4241-a7-arthurlockman.iam.gserviceaccount.com",
+  "client_id": "115897263766850922005",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/heroku-dyno%40cs4241-a7-arthurlockman.iam.gserviceaccount.com"
+}
