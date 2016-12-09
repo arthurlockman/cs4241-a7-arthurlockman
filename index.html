@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>CS4241 Assignment 6</title>
+        <title>CS4241 Assignment 7</title>
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -14,6 +14,7 @@
 
         <!-- Socket.io -->
         <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+        
         <!-- Page Script -->
         <script src="scripts.js"></script>
 
@@ -27,67 +28,19 @@
     <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-header theme-showcase" role="main">
-                <a class="navbar-brand" href="/">CS 4241 Assignment 6</a>
+                <a class="navbar-brand" href="/">CS 4241 Assignment 7</a>
             </div>
         </div>
         <div class="container" id="body-container">
-            <p>
-                <div class="alert alert-warning" role="alert" id="alert-bar">
-                    I'm an annoying alert about cookies!
-                    <button class="btn btn-xs btn-warning" id="alert-hide" style="float:right;">Click me to hide!</button>
-                </div>
-            </p>
-            <h2>
-                Mouse Wheel Events
-            </h2>
-            <div id="wheelme">
+            <div id="sendMessageForm">
                 <p>
-                    Roll your mouse wheel over me!
-                </p>
-            </div>
-            <h2>
-                Click Events
-            </h2>
-            <div>
-                <p><button class="btn btn-info" id="clickme-onclick">Click me with onclick!</button></p>
-            </div>
-            <div id="hidden-button" class="hidden visuallyhidden">
-                <p><button class="btn btn-warning" id="clickme-hidden">Whoa, a hidden button!</button></p>
-                <div id="hidden-button-counter">
-                    <p>You clicked the hidden button 0 times.</p>
-                </div>
-            </div>
-            <div id="text-input-control">
-                <h2>
-                    Keyboard Events and InnerText
-                </h2>
-                <p>
-                    <textarea class="form-control" rows="2" id="textfield"></textarea>
-                </p>
-                <p>
-                    <div id="change-text">Change this text with the text box above!</div>
-                </p>     
-            </div>
-            <div>
-                <h2>
-                    Window Reszing
-                </h2>
-                <p>
-                    Change the window size to grow and shrink the purple box!
-                </p>
-                <div id="window-resize">
-                </div>
-            </div>
-            <div>
-                <h2>
-                    Mouseover
-                </h2>
-                <p>
-                    Mouseover the red box to change its color!
-                </p>
-                <p>
-                    <div id="mouseover-box">
+                    <div class="form-group">
+                        <label for="new-message-field">Send an anonymous message to the community!</label>
+                        <input id="new-message-field" placeholder="What's on your mind?" class="form-control"/>
                     </div>
+                </p>
+                <p>
+                    <button class="btn btn-primary" id="new-message-button">Send Message</button>
                 </p>
             </div>
         </div>

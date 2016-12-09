@@ -24,8 +24,16 @@ var ref = db.ref('/')
 var messagesRef = ref.child('messages')
 var usersRef = ref.child('users')
 
-ref.on('value', function(snapshot) {
+// ref.on('value', function(snapshot) {
+//   console.log(snapshot.val())
+// }, function(errorObject) {
+//   console.log('Read failed: ' + errorObject.code)
+// })
+
+//Handle when a new message is received
+messagesRef.on('child_added', function(snapshot) {
   console.log(snapshot.val())
+  io.emit('message', JSON.stringify(snapshot.val()))
 }, function(errorObject) {
   console.log('Read failed: ' + errorObject.code)
 })
@@ -37,16 +45,10 @@ io.on('connection', function(socket) {
   })
 })
 
-//Handle when a new message is received
-messagesRef.on('child_added', function(snapshot) {
-  console.log(snapshot.val())
-}, function(errorObject) {
-  console.log('Read failed: ' + errorObject.code)
-})
-
 //Save a new message to the DB
 function saveNewMessage(req, res) {
   var chunk = ''
+  cookies = parseCookies(req)
   req.on('data', function(data) {
     chunk += data
   })
@@ -54,47 +56,18 @@ function saveNewMessage(req, res) {
     var data = querystring.parse(chunk)
     messagesRef.push().set({
       message: data.message,
-      user: clientId
+      user: cookies.clientId
     })
-  })
-  messagesRef.push().set({
-    message: messageText,
-    user: clientId
+    res.end('operation complete')
   })
 }
 
-// saveNewMessage("aefaefafaefe", "Test Message")
-
-var server = http.createServer (function (req, res) {
-  var uri = url.parse(req.url)
-
-  switch( uri.pathname ) {
-    case '/':
-    case '/index.html':
-        sendIndex(res, req)
-        break
-    case '/css/style.css':
-      sendFile(res, 'style.css', 'text/css')
-      break
-    case '/scripts.js':
-      sendFile(res, 'scripts.js', 'text/javascript')
-      break
-    case '/server.js':
-      sendFile(res, 'server.js', 'text/javascript')
-      break
-    case '/readme.md':
-    case '/README.md':
-      sendReadme(res)
-      break
-    case '/newmessage':
-      saveNewMessage(req, res)
-    default:
-      res.end('404 not found')
-  }
-})
-
-server.listen(process.env.PORT || port)
-console.log('listening on 8080')
+//Get all messages from DB
+function getAllMessages(req, res) {
+  messagesRef.once('value', function(v) {
+    res.end(JSON.stringify(v.val()))
+  })
+}
 
 function sendReadme(res) {
   var contentType = 'text/html'
@@ -147,3 +120,38 @@ function parseCookies(req) {
   var rc = req.headers.cookie
   return cookie.parse(rc)
 }
+
+var server = http.createServer (function (req, res) {
+  var uri = url.parse(req.url)
+
+  switch( uri.pathname ) {
+    case '/':
+    case '/index.html':
+        sendIndex(res, req)
+        break
+    case '/css/style.css':
+      sendFile(res, 'style.css', 'text/css')
+      break
+    case '/scripts.js':
+      sendFile(res, 'scripts.js', 'text/javascript')
+      break
+    case '/server.js':
+      sendFile(res, 'server.js', 'text/javascript')
+      break
+    case '/readme.md':
+    case '/README.md':
+      sendReadme(res)
+      break
+    case '/newmessage':
+      saveNewMessage(req, res)
+      break
+    case '/messages':
+      getAllMessages(req, res)
+      break
+    default:
+      res.end('404 not found')
+  }
+})
+
+server.listen(process.env.PORT || port)
+console.log('listening on 8080')
