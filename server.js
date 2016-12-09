@@ -8,7 +8,7 @@ var http = require('http')
   , cookie = require('cookie')
   , generateName = require('sillyname')
   , app = require('express')()
-  , io = require('socket.io').listen(port + 1)
+  , io = require('socket.io').listen(81)
 
 //Configure firebase connection
 // https://firebase.google.com/docs/database/admin/retrieve-data

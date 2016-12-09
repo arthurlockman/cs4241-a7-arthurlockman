@@ -1,4 +1,4 @@
-var socket = io.connect('http://'+window.location.hostname+':8081')
+var socket = io.connect('http://'+window.location.hostname+':81')
 
 socket.on('message', function(msg) {
     messageInfo = JSON.parse(msg)
