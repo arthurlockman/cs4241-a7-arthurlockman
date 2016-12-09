@@ -1,5 +1,4 @@
-var http = require('http')
-  , fs   = require('fs')
+var fs   = require('fs')
   , marked = require('marked')
   , url  = require('url')
   , querystring = require('querystring')
@@ -8,7 +7,8 @@ var http = require('http')
   , cookie = require('cookie')
   , generateName = require('sillyname')
   , app = require('express')()
-  , io = require('socket.io').listen(81)
+  , http = require('http').Server(app)
+  , io = require('socket.io')(http)
 
 //Configure firebase connection
 // https://firebase.google.com/docs/database/admin/retrieve-data
@@ -121,37 +121,30 @@ function parseCookies(req) {
   return cookie.parse(rc)
 }
 
-var server = http.createServer (function (req, res) {
-  var uri = url.parse(req.url)
-
-  switch( uri.pathname ) {
-    case '/':
-    case '/index.html':
-        sendIndex(res, req)
-        break
-    case '/css/style.css':
-      sendFile(res, 'style.css', 'text/css')
-      break
-    case '/scripts.js':
-      sendFile(res, 'scripts.js', 'text/javascript')
-      break
-    case '/server.js':
-      sendFile(res, 'server.js', 'text/javascript')
-      break
-    case '/readme.md':
-    case '/README.md':
-      sendReadme(res)
-      break
-    case '/newmessage':
-      saveNewMessage(req, res)
-      break
-    case '/messages':
-      getAllMessages(req, res)
-      break
-    default:
-      res.end('404 not found')
-  }
+app.get('/', function(req, res) {
+  sendIndex(res, req)
 })
+app.get('/css/style.css', function(req, res) {
+  sendFile(res, 'style.css', 'text/css')
+})
+app.get('/scripts.js', function(req, res) {
+  sendFile(res, 'scripts.js', 'text/javascript')
+})
+app.get('/server.js', function(req, res) {
+  sendFile(res, 'server.js', 'text/javascript')
+})
+app.get('/readme.md', function(req, res) {
+  sendReadme(res)
+})
+app.get('/README.md', function(req, res) {
+  sendReadme(res)
+})
+app.get('/newmessage', function(req, res) {
+  sendFile(res, 'scripts.js', 'text/javascript')
+})
+app.post('/newmessage', saveNewMessage)
+app.get('/messages', getAllMessages)
 
-server.listen(process.env.PORT || port)
-console.log('listening on 8080')
+http.listen(process.env.PORT || port, function() {
+  console.log('listening on ' + process.env.PORT || port)
+})
