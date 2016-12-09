@@ -7,6 +7,8 @@ var http = require('http')
   , port = 8080
   , cookie = require('cookie')
   , generateName = require('sillyname')
+  , app = require('express')()
+  , io = require('socket.io').listen(8081)
 
 //Configure firebase connection
 // https://firebase.google.com/docs/database/admin/retrieve-data
@@ -16,6 +18,7 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount), 
   databaseURL: "https://cs4241-a7-arthurlockman.firebaseio.com/"
 })
+
 var db = admin.database()
 var ref = db.ref('/')
 var messagesRef = ref.child('messages')
@@ -25,6 +28,13 @@ ref.on('value', function(snapshot) {
   console.log(snapshot.val())
 }, function(errorObject) {
   console.log('Read failed: ' + errorObject.code)
+})
+
+io.on('connection', function(socket) {
+  console.log('a user connected!')
+  socket.on('disconnect', function() {
+    console.log('a user disconnected')
+  })
 })
 
 //Handle when a new message is received
