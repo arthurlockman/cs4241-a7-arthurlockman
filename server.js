@@ -146,5 +146,5 @@ app.post('/newmessage', saveNewMessage)
 app.get('/messages', getAllMessages)
 
 http.listen(process.env.PORT || port, function() {
-  console.log('listening on ' + process.env.PORT || port)
+  console.log('listening on ' + (process.env.PORT || port))
 })
