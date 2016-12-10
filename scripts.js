@@ -63,14 +63,3 @@ function getCookie(name) {
   var parts = value.split("; " + name + "=")
   if (parts.length == 2) return parts.pop().split(";").shift()
 }
-
-//Hacky fix for safari zooming on text input on mobile
-$("input[type=text], textarea").mouseover(zoomDisable).mousedown(zoomEnable)
-function zoomDisable(){
-  $('head meta[name=viewport]').remove()
-  $('head').prepend('<meta name="viewport" content="user-scalable=0" />')
-}
-function zoomEnable(){
-  $('head meta[name=viewport]').remove()
-  $('head').prepend('<meta name="viewport" content="user-scalable=1" />')
-}
