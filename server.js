@@ -24,12 +24,6 @@ var ref = db.ref('/')
 var messagesRef = ref.child('messages')
 var usersRef = ref.child('users')
 
-// ref.on('value', function(snapshot) {
-//   console.log(snapshot.val())
-// }, function(errorObject) {
-//   console.log('Read failed: ' + errorObject.code)
-// })
-
 //Handle when a new message is received
 messagesRef.on('child_added', function(snapshot) {
   console.log(snapshot.val())

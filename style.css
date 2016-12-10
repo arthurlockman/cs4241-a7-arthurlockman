@@ -20,39 +20,3 @@ body {
 .container .text-muted {
   margin: 20px 0;
 }
-
-.btn-delete {
-  float: right;
-}
-
-#wheelme {
-  font-size: 14px;
-}
-
-#window-resize {
-  background-color: blueviolet;
-  width: 100px;
-  height: 100px;
-}
-
-#mouseover-box {
-  background-color: darkred;
-  width: 100px;
-  height: 100px;
-}
-
-.hidden {
-  display: none;
-}
-
-.visuallyhidden {
-  opacity: 0;
-}
-
-#alert-bar {
-  transition: all 0.5s linear;
-}
-
-#hidden-button {
-  transition: all 0.5s linear;
-}
