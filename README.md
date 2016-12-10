@@ -1,5 +1,20 @@
+
 Assignment 7 - Sessions
 ===
+
+## Technical Achievement
+
+For this assignment I elected to do two things for technical achievement: store data in the backend using Firebase and use [socket.io](http://socket.io) to serve data in real time to clients.
+
+### Firebase
+
+Firebase is a fairly straightforward integration. Instead of storing data in memory as javascript objects, I simply push out the JSON data directly into firebase for storage instead. This means that the data will persist across dyno reboots. It also means that the server can listen for changes on the database since Firebase provides convenient listeners to clients that can fire whenever a new message is added to the database. I connected this to the messages object so that the server can process each message and send it out to the client using sockets. This code is partially in the [server](http://cs4241-a7-arthurlockman.herokuapp.com/server.js), and partially in the [client](http://cs4241-a7-arthurlockman.herokuapp.com/scripts.js).
+
+### Socket.io
+
+Socket.io was used to push data out to the clients when new data became available on the server. Each client opens a new socket connection to the server, and whenever the Firebase database alerts the server that a new message has been posted, the server pushes this data out to the clients over the socket connection. This means that if a user pushes a new post from any computer, all of the other users on the web page will get that update immediately. To make this work I had to switch from a raw HTTP server to using Express, since on Heroku only one port is allowed to be allocated by clients. socket.io and Express have a method of serving the socket connection and the web server over the single heroku port, so I needed to migrate to Express. This code is partially in the [server](http://cs4241-a7-arthurlockman.herokuapp.com/server.js), and partially in the [client](http://cs4241-a7-arthurlockman.herokuapp.com/scripts.js).
+
+## Assignment Description
 
 Many of you know YikYak, the "anonymous" (aka not really anonymous) post sharing app. 
 The goal of this assignment is to use your knowledge of cookies, storage, and sessions to make a similar app, where users can post messages that are automatically assigned an anonymous id.
@@ -16,8 +31,8 @@ Tips:
 - To test the first task, use a different browser since it will act as a different "person".
 - For the second and third tasks, you'll find many possible approaches using storage and/or cookies.
 
-Details
----
+
+### Details
 
 Do the following to complete this assignment:
 
